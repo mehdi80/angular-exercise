@@ -1,7 +1,7 @@
 <div class="course-card">
     <div class="course-title">{{course.description}}</div>
 
-    <img width="300px" alt="course logo" [src]="course.iconUrl" *ngIf="course.iconUrl">
+    <img width="300px" alt="course logo" [src]="course.iconUrl" *ngIf="isImageVisible()">
 
     <div class="course-description">
         {{course.longDescription}}
