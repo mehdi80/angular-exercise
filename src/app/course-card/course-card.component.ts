@@ -9,7 +9,11 @@ import { Course } from '../model/course';
 export class CourseCardComponent implements OnInit {
 
   @Input()
-  course!: Course;
+  course!: Course | undefined;
+
+  @Input()
+  cardIndex!: number;
+
 
   @Output() cardClicked = new EventEmitter<Course>();
   constructor() {
