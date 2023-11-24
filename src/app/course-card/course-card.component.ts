@@ -34,9 +34,22 @@ export class CourseCardComponent implements OnInit {
   }
 
   cardClasses() {
-    return {
-      'beginner': this.course.category == 'BEGINNER',
-      'course-card': true
+    let className;
+
+    if (this.course.category == 'ADVANCED') {
+
+      className = 'advanced';
+
+    } else if (this.course.category == 'INTERMEDIATE') {
+
+      className = 'intermediate';
+
+    } else {
+
+      className = 'beginner';
+
     }
+    return className
+
   }
 }
