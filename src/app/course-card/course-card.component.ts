@@ -44,18 +44,16 @@ export class CourseCardComponent implements OnInit {
 
       className = 'intermediate';
 
-    } else {
+    } else if (this.course.category == 'BEGINNER') {
 
       className = 'beginner';
+
+    } else {
+
+      className = ''
 
     }
     return className
 
-  }
-
-  cardStyles() {
-    return {
-      'background-image': 'url(' + this.course.iconUrl + ')'
-    };
   }
 }
