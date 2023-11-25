@@ -52,4 +52,8 @@ export class CourseCardComponent implements OnInit {
     return className
 
   }
+
+  cardStyles() {
+    return { 'text-decoration': 'underline' }
+  }
 }
