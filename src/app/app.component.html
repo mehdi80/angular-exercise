@@ -3,6 +3,7 @@
 </div>
 <div class="demo">
   <div>StartDate : {{startDate | date : 'MMM/dd/yyyy'}}</div>
+  <div> {{title | titlecase}}</div>
 </div>
 <div class="courses">
   <app-course-card *ngFor="let course of courses; index as i" (cardClicked)="onCourseCelected($event)" [course]="course"
