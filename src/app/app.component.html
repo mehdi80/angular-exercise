@@ -1,6 +1,9 @@
 <div class="top-menu">
   <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 </div>
+<div class="demo">
+  <div>StartDate : {{startDate | date : 'MMM/dd/yyyy'}}</div>
+</div>
 <div class="courses">
   <app-course-card *ngFor="let course of courses; index as i" (cardClicked)="onCourseCelected($event)" [course]="course"
     [cardIndex]="i + 1"></app-course-card>
