@@ -14,6 +14,8 @@ export class AppComponent {
 
   title = COURSES[0].description;
 
+  price = 9.099547586458;
+
   onCourseCelected(course: Course) {
     console.log("App component - clicked event bubled", course)
   }
