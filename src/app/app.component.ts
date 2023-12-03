@@ -8,7 +8,7 @@ import { Course } from './model/course';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  courses = COURSES;
+  courses: any[] = COURSES;
 
   startDate = new Date(2000, 0, 1);
 
@@ -16,7 +16,10 @@ export class AppComponent {
 
   price = 9.099547586458;
 
+  percent = 0.45;
+
   onCourseCelected(course: Course) {
     console.log("App component - clicked event bubled", course)
   }
+
 }
