@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { COURSES } from 'src/db-data';
 import { Course } from './model/course';
 import { CourseCardComponent } from './course-card/course-card.component';
@@ -8,17 +8,23 @@ import { CourseCardComponent } from './course-card/course-card.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
+
   title = 'angular-corse-2';
 
   courses = COURSES;
 
   @ViewChild('cardRef1', { read: ElementRef }) Card1!: ElementRef;
-  @ViewChild('container') containerDiv!: ElementRef;
 
+  @ViewChild('courseImage') corseImage!: ElementRef;
+
+  constructor() {
+  }
+
+  ngAfterViewInit() {
+    console.log("courseImage", this.corseImage);
+  }
 
   onCourseCelected(course: Course) {
-    console.log("card1", this.Card1)
-
   }
 }
