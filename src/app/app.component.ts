@@ -13,9 +13,13 @@ export class AppComponent {
 
   courses = COURSES;
 
-  @ViewChild(CourseCardComponent) Card!: CourseCardComponent;
+  @ViewChild('cardRef1') Card1!: CourseCardComponent;
+
+  @ViewChild('cardRef2') Card2!: CourseCardComponent;
+
 
   onCourseCelected(course: Course) {
-    console.log(this.Card)
+    console.log("card1", this.Card1)
+    console.log("card2", this.Card2)
   }
 }
