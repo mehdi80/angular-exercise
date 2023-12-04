@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { COURSES } from 'src/db-data';
 import { Course } from './model/course';
+import { CourseCardComponent } from './course-card/course-card.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,9 @@ export class AppComponent {
 
   courses = COURSES;
 
+  @ViewChild(CourseCardComponent) Card!: CourseCardComponent;
+
   onCourseCelected(course: Course) {
-    console.log("App component - clicked event bubled", course)
+    console.log(this.Card)
   }
 }

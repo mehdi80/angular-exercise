@@ -2,6 +2,6 @@
   <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 </div>
 <div class="courses">
-  <app-course-card *ngFor="let course of courses; index as i" (cardClicked)="onCourseCelected($event)" [course]="course"
-    [cardIndex]="i + 1"></app-course-card>
+  <app-course-card (cardClicked)="onCourseCelected($event)" [course]="courses[0]"></app-course-card>
+  <app-course-card (cardClicked)="onCourseCelected($event)" [course]="courses[1]"></app-course-card>
 </div>

@@ -1,8 +1,6 @@
 
 
 export const COURSES: any = [
-
-    undefined,
     {
         id: 1,
         description: "Angular Core Deep Dive",
