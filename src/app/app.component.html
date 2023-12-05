@@ -1,9 +1,11 @@
 <div class="top-menu">
   <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 </div>
+
+<button (click)="onCourseEdited()">Edite list</button>
 <div class="courses" #container>
 
-  <app-course-card #cardRef1 (cardClicked)="onCourseCelected($event)" [course]="courses[0]">
+  <app-course-card *ngFor="let course of courses" (cardClicked)="onCourseCelected($event)" [course]="course">
 
   </app-course-card>
 
