@@ -3,9 +3,11 @@
 </div>
 <div class="courses" *ngIf="courses[0] as course">
   <app-course-card (cardClicked)="onCourseCelected($event)" [course]="course">
+    <div class="course-image">
 
-    <img width="300px" alt="course logo" [src]="course.iconUrl">
+      <img width="300px" alt="course logo" [src]="course.iconUrl">
 
+    </div>
     <h5>Total Lessons: 5</h5>
 
   </app-course-card>
