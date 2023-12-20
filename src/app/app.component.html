@@ -6,5 +6,15 @@
 
     <img width="300px" alt="course logo" [src]="course.iconUrl">
 
+    <h5>Total Lessons: 5</h5>
+
+  </app-course-card>
+
+  <app-course-card (cardClicked)="onCourseCelected($event)" [course]="courses[1]">
+
+    <img width="300px" alt="course logo" [src]="courses[1].iconUrl">
+
+    <h5>Total Lessons: 10</h5>
+
   </app-course-card>
 </div>
