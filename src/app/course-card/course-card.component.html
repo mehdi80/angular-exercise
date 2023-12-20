@@ -2,12 +2,11 @@
     <div class="course-title">{{cardIndex ||'' +''+ course.description}}</div>
 
     <ng-content select=".course-image"></ng-content>
+    <ng-content select=".course-description"></ng-content>
 
     <ng-template #noImage>
         <P>no image is available</P>
     </ng-template>
-    <div class="course-description">
-        {{course.longDescription}}
-    </div>
+
     <button (click)="onCourseViewed()">View Course</button>
 </div>
