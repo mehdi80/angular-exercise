@@ -3,12 +3,7 @@
 </div>
 <div class="courses" *ngIf="courses[0] as course">
   <app-course-card (cardClicked)="onCourseCelected($event)" [course]="course">
-    <div class="course-image">
-
-      <img width="300px" alt="course logo" [src]="course.iconUrl">
-      <h5>Total Lessons: 5</h5>
-    </div>
-
+    <app-course-image [src]="course.iconUrl"></app-course-image>
     <div class="course-description">
       {{course.longDescription}}
     </div>
@@ -16,11 +11,4 @@
     Edite Discription : <textarea></textarea>
   </app-course-card>
 
-  <app-course-card (cardClicked)="onCourseCelected($event)" [course]="courses[1]">
-
-    <img width="300px" alt="course logo" [src]="courses[1].iconUrl">
-
-    <h5>Total Lessons: 10</h5>
-
-  </app-course-card>
 </div>
