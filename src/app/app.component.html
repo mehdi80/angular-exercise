@@ -2,13 +2,17 @@
   <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 </div>
 <div class="courses" *ngIf="courses[0] as course">
+
   <app-course-card (cardClicked)="onCourseCelected($event)" [course]="course">
+
     <app-course-image [src]="course.iconUrl"></app-course-image>
+
     <div class="course-description">
       {{course.longDescription}}
     </div>
 
     Edite Discription : <textarea></textarea>
+
   </app-course-card>
 
 </div>

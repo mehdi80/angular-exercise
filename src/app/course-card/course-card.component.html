@@ -1,17 +1,23 @@
 <div class="course-card" *ngIf="course" #container>
-    <div class="course-title">{{cardIndex ||'' +''+ course.description}}</div>
+    <div class="course-title">
+        {{cardIndex ||'' +''+ course.description}}
+    </div>
 
-    <ng-content select="course-image"></ng-content>
+    <ng-content select="app-course-image" *ngIf="course.iconUrl; else noImage"></ng-content>
+
     <ng-content select=".course-description"></ng-content>
+
     <ng-content></ng-content>
 
     <ng-template #noImage>
-        <P>no image is available</P>
+        <P class="warn">no image is available yet</P>
+        <img src="/assets/empty-image.png">
     </ng-template>
 
-    <div class="course-description">
+    <!-- <div class="course-description">
         {{course.longDescription}}
-    </div>
+    </div> -->
+
     <div class="course-category" [ngSwitch]="course.category">
         <div class="category" *ngSwitchCase="'BEGINNER'">beginer</div>
         <div class="category" *ngSwitchCase="'ADVANCED'">advanced</div>
