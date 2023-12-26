@@ -3,17 +3,12 @@
 </div>
 <div class="courses" *ngIf="courses[0] as course">
 
-  <ng-template #noImage let-courseName="description">
+  <ng-template #blankImage let-courseName="description">
     <P class="warn">{{courseName}} no image is available yet</P>
     <img src="/assets/empty-image.png">
   </ng-template>
 
-  <ng-container *ngTemplateOutlet="noImage ; context: {description: course.description}">
-
-  </ng-container>
-  <hr />
-  <hr />
-  <app-course-card (cardClicked)="onCourseCelected($event)" [course]="course">
+  <app-course-card (cardClicked)="onCourseCelected($event)" [course]="course" [noImageTpl]="blankImage">
 
     <app-course-image [src]="course.iconUrl"></app-course-image>
 
