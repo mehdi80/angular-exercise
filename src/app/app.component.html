@@ -8,16 +8,13 @@
     <img src="/assets/empty-image.png">
   </ng-template>
 
-  <app-course-card (cardClicked)="onCourseCelected($event)" [course]="course" [noImageTpl]="blankImage">
+  <app-course-card appHighlighted (cardClicked)="onCourseCelected($event)" [course]="course" [noImageTpl]="blankImage">
 
     <app-course-image [src]="course.iconUrl"></app-course-image>
 
     <div class="course-description">
       {{course.longDescription}}
     </div>
-
-    Edite Discription : <textarea></textarea>
-
   </app-course-card>
 
 </div>
