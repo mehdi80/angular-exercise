@@ -28,7 +28,7 @@ export class CourseCardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.image)
+    // console.log(this.image)
   }
 
   ngOnInit() {

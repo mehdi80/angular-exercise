@@ -3,6 +3,10 @@ course-card {
     display: block;
 }
 
+.highlighted {
+    box-shadow: 0 2px 16px 0 #de1e19, 0 3px 8px 0 rgba(226, 21, 19, 0.47), 0 6px 8px -1px #b41c18;
+}
+
 .course-card {
     margin-bottom: 40px;
     text-align: center;
@@ -91,6 +95,8 @@ course-card {
         display: inline;
     }
 }
+
+
 
 // :host-context(.salmon-theme) {
 //     .course-card {
