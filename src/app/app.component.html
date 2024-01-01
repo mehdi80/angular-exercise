@@ -8,8 +8,7 @@
     <img src="/assets/empty-image.png">
   </ng-template>
 
-  <app-course-card [appHighlighted]="true" (cardClicked)="onCourseCelected($event)" [course]="course"
-    [noImageTpl]="blankImage">
+  <app-course-card appHighlighted (cardClicked)="onCourseCelected($event)" [course]="course" [noImageTpl]="blankImage">
 
     <app-course-image [src]="course.iconUrl"></app-course-image>
 

@@ -1,19 +1,30 @@
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, HostBinding, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[appHighlighted]'
 })
 export class HighlightedDirective {
 
-  @Input('appHighlighted')
+  @Input()
   isHighlighted = false;
+
   constructor() {
-    console.log('directive created ...')
   }
 
   @HostBinding('class.highlighted')
   get cssClasses() {
     return this.isHighlighted;
+  }
+
+  @HostListener('mouseover', ['$event'])
+  onMouseOver($event: any) {
+    console.log($event)
+    this.isHighlighted = true;
+  }
+
+  @HostListener('mouseleave')
+  onMouseLeave() {
+    this.isHighlighted = false;
   }
 
 }
