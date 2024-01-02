@@ -16,6 +16,10 @@ export class AppComponent {
   @ViewChildren(CourseCardComponent, { read: ElementRef })
   cards!: QueryList<ElementRef>;
 
+  onToggel(isHighlighted: boolean) {
+    console.log(isHighlighted)
+  }
+
   onCourseCelected(course: Course) {
   }
 }
