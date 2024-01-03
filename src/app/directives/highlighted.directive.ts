@@ -1,7 +1,8 @@
 import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
 
 @Directive({
-  selector: '[appHighlighted]'
+  selector: '[appHighlighted]',
+  exportAs: 'hl'
 })
 export class HighlightedDirective {
 
@@ -32,4 +33,8 @@ export class HighlightedDirective {
     this.toggelHighLighted.emit(this.isHighlighted)
   }
 
+  toggel() {
+    this.isHighlighted = !this.isHighlighted;
+    this.toggelHighLighted.emit(this.isHighlighted)
+  }
 }
