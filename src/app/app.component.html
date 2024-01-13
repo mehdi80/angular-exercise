@@ -1,20 +1,22 @@
 <div class="top-menu">
   <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 </div>
-<div class="courses" *ngIf="courses[0] as course">
+<ng-template [ngIf]="courses[0]" let-course>
+  <div class="courses">
 
-  <ng-template #blankImage let-courseName="description">
-    <P class="warn">{{courseName}} no image is available yet</P>
-    <img src="/assets/empty-image.png">
-  </ng-template>
+    <ng-template #blankImage let-courseName="description">
+      <P class="warn">{{courseName}} no image is available yet</P>
+      <img src="/assets/empty-image.png">
+    </ng-template>
 
-  <app-course-card appHighlighted (toggelHighLighted)="onToggel($event)" (cardClicked)="onCourseCelected($event)"
-    [course]="course" [noImageTpl]="blankImage" #highLighter="hl">
+    <app-course-card appHighlighted (toggelHighLighted)="onToggel($event)" (cardClicked)="onCourseCelected($event)"
+      [course]="course" [noImageTpl]="blankImage" #highLighter="hl">
 
-    <app-course-image [src]="course.iconUrl"></app-course-image>
+      <app-course-image [src]="course.iconUrl" *appNgxUnless="!course.iconUrl"></app-course-image>
 
-    <div class="course-description" (dblclick)="highLighter.toggel()">
-      {{course.longDescription}}
-    </div>
-  </app-course-card>
-</div>
+      <div class="course-description" (dblclick)="highLighter.toggel()">
+        {{course.longDescription}}
+      </div>
+    </app-course-card>
+  </div>
+</ng-template>
