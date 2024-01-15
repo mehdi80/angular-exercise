@@ -56,3 +56,7 @@
     border-radius: 4px;
     margin-top: 10px;
 }
+
+:host-context(.salmon-theme) .course-card {
+    background: lightsalmon;
+}
