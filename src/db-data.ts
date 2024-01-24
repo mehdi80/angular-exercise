@@ -83,6 +83,6 @@ export const COURSES: any = [
 ];
 
 
-export function findCourseById(courseId: number) {
-    return COURSES.find((course: { id: number; }) => course.id == courseId);
+export function findCourseById(courseId: string) {
+    return COURSES.find((course: { id: string; }) => course.id == courseId);
 }
