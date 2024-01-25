@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Course } from '../model/course';
 import { CourseImageComponent } from '../course-image/course-image.component';
+import { CoursesService } from '../services/courses.service';
 
 @Component({
   selector: 'app-course-card',
@@ -23,7 +24,7 @@ export class CourseCardComponent implements OnInit, AfterViewInit {
   @ContentChild(CourseImageComponent, { read: ElementRef })
   image!: ElementRef;
 
-  constructor() {
+  constructor(private coursesService: CoursesService) {
 
   }
 
@@ -32,7 +33,7 @@ export class CourseCardComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-
+    console.log("coursesService cours card", this.coursesService)
   }
 
   onImageVisible() {
