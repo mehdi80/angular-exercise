@@ -4,6 +4,7 @@ import { Course } from './model/course';
 import { CourseCardComponent } from './course-card/course-card.component';
 import { HighlightedDirective } from './directives/highlighted.directive';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class AppComponent {
 
-  courses!: any;
+  courses$!: Observable<Course[]>;
 
   constructor(private http: HttpClient) {
 
@@ -23,7 +24,7 @@ export class AppComponent {
       .set("page", "1")
       .set("pageSize", "10")
 
-    this.http.get('http://localhost:9000/api/courses', { params }).subscribe(courses => this.courses = courses)
+    this.courses$ = this.http.get<Course[]>('http://localhost:9000/api/courses', { params })
   }
 
 }
