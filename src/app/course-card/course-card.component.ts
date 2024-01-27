@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Course } from '../model/course';
-import { CourseImageComponent } from '../course-image/course-image.component';
 import { CoursesService } from '../services/courses.service';
 
 @Component({
@@ -8,7 +7,7 @@ import { CoursesService } from '../services/courses.service';
   templateUrl: './course-card.component.html',
   styleUrls: ['./course-card.component.scss'],
 })
-export class CourseCardComponent implements OnInit, AfterViewInit {
+export class CourseCardComponent implements OnInit {
 
   @Input()
   course!: Course;
@@ -16,32 +15,18 @@ export class CourseCardComponent implements OnInit, AfterViewInit {
   @Input()
   cardIndex!: number;
 
-  @Input()
-  noImageTpl!: TemplateRef<any>
-
-  @Output() cardClicked = new EventEmitter<Course>();
-
-  @ContentChild(CourseImageComponent, { read: ElementRef })
-  image!: ElementRef;
+  @Output('courseChanged') courseEmitter = new EventEmitter<Course>();
 
   constructor(private coursesService: CoursesService) {
 
-  }
-
-  ngAfterViewInit() {
-    // console.log(this.image)
   }
 
   ngOnInit() {
     console.log("coursesService cours card", this.coursesService)
   }
 
-  onImageVisible() {
-    return this.course && this.course.iconUrl
-  }
-
-  onCourseViewed() {
-    this.cardClicked.emit(this.course)
+  onSaveClicked(description: string) {
+    this.courseEmitter.emit({ ...this.course, description })
   }
 
   cardClasses() {

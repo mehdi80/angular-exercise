@@ -23,4 +23,10 @@ export class AppComponent {
     this.courses$ = this.coursesService.loadCourse()
   }
 
+  save(course: Course) {
+    this.coursesService.saveCourse(course)
+      .subscribe(
+        () => console.log('Course Saved')
+      )
+  }
 }
