@@ -1,33 +1,24 @@
-import { Component, Inject, InjectionToken, Injector } from '@angular/core';
+import { Component, Inject, InjectionToken, Injector, inject } from '@angular/core';
 import { Course } from './model/course';
-import { Observable } from 'rxjs';
+import { Observable, config } from 'rxjs';
 import { CoursesService } from './services/courses.service';
 import { HttpClient } from '@angular/common/http';
-
-function coursesServiseProvider(http: HttpClient): CoursesService {
-  return new CoursesService(http);
-}
-
-export const COURSES_SERVIS = new InjectionToken<CoursesService>('COURSES_SERVISE');
+import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [
-    {
-      provide: COURSES_SERVIS,
-      useFactory: coursesServiseProvider,
-      deps: [HttpClient]
-    }
-  ]
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 
   courses$!: Observable<Course[]>;
 
-  constructor(@Inject(COURSES_SERVIS) private coursesService: CoursesService) {
-
+  constructor(
+    private coursesService: CoursesService,
+    @Inject(CONFIG_TOKEN) private config: AppConfig
+  ) {
+    console.log(config);
   }
 
   ngOnInit() {
