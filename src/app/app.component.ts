@@ -4,6 +4,7 @@ import { Observable, config } from 'rxjs';
 import { CoursesService } from './services/courses.service';
 import { HttpClient } from '@angular/common/http';
 import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
+import { COURSES } from 'src/db-data';
 
 @Component({
   selector: 'app-root',
@@ -12,20 +13,15 @@ import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
 })
 export class AppComponent {
 
-  courses$!: Observable<Course[]>;
+  courses = COURSES;
 
   constructor(
     private coursesService: CoursesService,
     @Inject(CONFIG_TOKEN) private config: AppConfig
   ) {
-    console.log(config);
   }
 
   ngOnInit() {
-    console.log(this.coursesService)
-
-
-    this.courses$ = this.coursesService.loadCourse()
   }
 
   save(course: Course) {

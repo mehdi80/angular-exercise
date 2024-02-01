@@ -28,6 +28,10 @@ export class CourseCardComponent implements OnInit {
     this.courseEmitter.emit({ ...this.course, description })
   }
 
+  onTitleChange(newTitle: string) {
+    this.course.description = newTitle;
+  }
+
   cardClasses() {
     let className;
 
