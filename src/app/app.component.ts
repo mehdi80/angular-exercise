@@ -24,6 +24,13 @@ export class AppComponent {
   ngOnInit() {
   }
 
+  onEditeCourse() {
+    const course = this.courses[0];
+    const newCourse: any = { ...course };
+    newCourse.description = 'New value';
+    this.courses[0] = newCourse;
+  }
+
   save(course: Course) {
     this.coursesService.saveCourse(course)
       .subscribe(
