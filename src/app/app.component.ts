@@ -1,4 +1,4 @@
-import { Component, Inject, InjectionToken, Injector, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, InjectionToken, Injector, inject } from '@angular/core';
 import { Course } from './model/course';
 import { Observable, config } from 'rxjs';
 import { CoursesService } from './services/courses.service';
@@ -9,11 +9,12 @@ import { COURSES } from 'src/db-data';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
-  courses = COURSES;
+  courses$!: Observable<Course[]>;
 
   constructor(
     private coursesService: CoursesService,
@@ -22,13 +23,10 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    this.courses$ = this.coursesService.loadCourse();
   }
 
   onEditeCourse() {
-    const course = this.courses[0];
-    const newCourse: any = { ...course };
-    newCourse.description = 'New value';
-    this.courses[0] = newCourse;
   }
 
   save(course: Course) {
