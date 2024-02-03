@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, InjectionToken, Injector, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Inject, InjectionToken, Injector, OnInit, inject } from '@angular/core';
 import { Course } from './model/course';
 import { Observable, config } from 'rxjs';
 import { CoursesService } from './services/courses.service';
@@ -12,9 +12,11 @@ import { COURSES } from 'src/db-data';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class AppComponent implements OnInit, DoCheck {
 
   courses!: Course[];
+
+  loaded = false;
 
   constructor(
     private coursesService: CoursesService,
@@ -22,12 +24,20 @@ export class AppComponent {
     private cd: ChangeDetectorRef
   ) {
   }
+  ngDoCheck() {
+    console.log("ngDoCheck")
+    if (this.loaded) {
+      this.cd.markForCheck();
+      console.log("call cd.markForCheck()");
+
+    }
+  }
 
   ngOnInit() {
     this.coursesService.loadCourse().subscribe(courses => {
       this.courses = courses;
+      this.loaded = true;
 
-      this.cd.markForCheck()
     });
   }
 
