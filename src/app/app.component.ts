@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, InjectionToken, Injector, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, InjectionToken, Injector, inject } from '@angular/core';
 import { Course } from './model/course';
 import { Observable, config } from 'rxjs';
 import { CoursesService } from './services/courses.service';
@@ -14,16 +14,21 @@ import { COURSES } from 'src/db-data';
 })
 export class AppComponent {
 
-  courses$!: Observable<Course[]>;
+  courses!: Course[];
 
   constructor(
     private coursesService: CoursesService,
-    @Inject(CONFIG_TOKEN) private config: AppConfig
+    @Inject(CONFIG_TOKEN) private config: AppConfig,
+    private cd: ChangeDetectorRef
   ) {
   }
 
   ngOnInit() {
-    this.courses$ = this.coursesService.loadCourse();
+    this.coursesService.loadCourse().subscribe(courses => {
+      this.courses = courses;
+
+      this.cd.markForCheck()
+    });
   }
 
   onEditeCourse() {
