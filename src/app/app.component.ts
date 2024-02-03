@@ -1,47 +1,30 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Inject, InjectionToken, Injector, OnInit, inject } from '@angular/core';
+import { Component, Inject, OnInit, } from '@angular/core';
 import { Course } from './model/course';
-import { Observable, config } from 'rxjs';
 import { CoursesService } from './services/courses.service';
-import { HttpClient } from '@angular/common/http';
-import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
+import { AppConfig, CONFIG_TOKEN } from './config';
 import { COURSES } from 'src/db-data';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, DoCheck {
+export class AppComponent implements OnInit {
 
-  courses!: Course[];
+  courses: Course[] = COURSES;
 
-  loaded = false;
 
   constructor(
     private coursesService: CoursesService,
-    @Inject(CONFIG_TOKEN) private config: AppConfig,
-    private cd: ChangeDetectorRef
-  ) {
-  }
-  ngDoCheck() {
-    console.log("ngDoCheck")
-    if (this.loaded) {
-      this.cd.markForCheck();
-      console.log("call cd.markForCheck()");
-
-    }
+    @Inject(CONFIG_TOKEN) private config: AppConfig) {
   }
 
   ngOnInit() {
-    this.coursesService.loadCourse().subscribe(courses => {
-      this.courses = courses;
-      this.loaded = true;
 
-    });
   }
 
   onEditeCourse() {
+    this.courses = []
   }
 
   save(course: Course) {
