@@ -1,4 +1,4 @@
-import { AfterContentChecked, Attribute, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Attribute, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
 
@@ -8,7 +8,9 @@ import { CoursesService } from '../services/courses.service';
   templateUrl: './course-card.component.html',
   styleUrls: ['./course-card.component.scss']
 })
-export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterContentChecked {
+export class CourseCardComponent implements OnInit, OnDestroy,
+  OnChanges, AfterContentChecked, AfterViewChecked,
+  AfterContentInit, AfterViewInit, DoCheck {
 
   @Input()
   course!: Course;
@@ -29,10 +31,22 @@ export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterC
   ngOnInit() {
     console.log("ngOnInit", this.course)
   }
+  ngDoCheck() {
+    console.log("ngDoCheck")
+  }
+  ngAfterContentInit() {
+    console.log("ngAfterContentInit")
+  }
+  ngAfterViewInit() {
+    console.log("ngAfterViewInit")
+  }
   ngAfterContentChecked() {
     console.log('ngAfterContentChecked');
     this.course.description = "ngAfterContentChecked";
     this.course.category = "ADVANCED"
+  }
+  ngAfterViewChecked() {
+    console.log('ngAfterViewChecked');
   }
   ngOnDestroy() {
     console.log("ngOnDestroy")
