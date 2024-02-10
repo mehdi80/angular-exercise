@@ -5,6 +5,7 @@ import { CoursesService } from './courses.service';
 import { CourseCardComponent } from './course-card/course-card.component';
 import { HighlightedDirective } from './directives/highlighted.directive';
 import { NgxUnlessDirective } from './directives/ngx-unless.directive';
+import { FilterByCategoryPipe } from './filter-by-category.pipe';
 
 
 
@@ -13,11 +14,13 @@ import { NgxUnlessDirective } from './directives/ngx-unless.directive';
     CourseCardComponent,
     CourseImageComponent,
     HighlightedDirective,
-    NgxUnlessDirective
+    NgxUnlessDirective,
+    FilterByCategoryPipe
   ],
   exports: [
     CourseCardComponent,
-    CourseImageComponent
+    CourseImageComponent,
+    FilterByCategoryPipe
   ],
   imports: [
     CommonModule

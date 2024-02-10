@@ -27,7 +27,8 @@ export class AppComponent implements OnInit {
     const course = this.courses[0];
     const newCourse = {
       ...course,
-      description: 'ngOnChanges'
+      description: 'ngOnChanges',
+      cardIndex: 1
     }
 
     this.courses[0] = newCourse;

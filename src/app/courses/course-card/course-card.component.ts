@@ -44,7 +44,6 @@ export class CourseCardComponent implements OnInit, OnDestroy,
   ngAfterContentChecked() {
     console.log('ngAfterContentChecked');
     this.course.description = "ngAfterContentChecked";
-    this.course.category = "ADVANCED"
   }
   ngAfterViewChecked() {
     console.log('ngAfterViewChecked');
