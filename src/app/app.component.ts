@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit, } from '@angular/core';
 import { Course } from './model/course';
-import { CoursesService } from './services/courses.service';
 import { AppConfig, CONFIG_TOKEN } from './config';
 import { COURSES } from 'src/db-data';
+import { CoursesService } from './courses/courses.service';
 
 @Component({
   selector: 'app-root',
